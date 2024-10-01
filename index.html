@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <div class="typing">
+        <div>
+            <h1>calc</h1>
+        </div>
+        <div class="display" id="display">
+            0
+        </div>
+
+    <div class="cal-button">
+
+        <button class="item7">7</button>
+        <button class="item8">8</button>
+        <button class="item9">9</button>
+        <button class="itemDel">DEL</button>
+        <button class="item4">4</button>
+        <button class="item5">5</button>
+        <button class="item6">6</button>
+        <button class="itemPlus">+</button>
+        <button class="item1">1</button>
+        <button class="item2">2</button>
+        <button class="item3">3</button>
+        <button class="itemMinut">-</button>
+        <button class="itemDot">.</button>
+        <button class="item10">0</button>
+        <button class="itemDivid">/</button>
+        <button class="itemMulti">*</button>
+            <button class="itemReset">RESET</button>
+            <button class="itemEqual">=</button>
+        
+    
+    </div>
+  
+</div>
+
+<script>
+    // Initialize the variables
+    let display = document.getElementById('display');
+    let currentInput = '';
+    let operator = '';
+    let previousInput = '';
+
+    // Function to update the display
+    function updateDisplay(values) {
+        display.innerText = values;
+    }
+
+    // Function to handle number buttons
+    function handleNumber(num) {
+        if(currentInput === 0 && num === 0) return;
+        currentInput += num
+        updateDisplay(currentInput)
+    }
+
+    // Function to handle operator buttons
+    function handleOperator(op) {
+        if (currentInput === '') return; // Prevent empty input
+        if (previousInput !== '') {
+            calculate();
+        }
+        operator = op;
+        previousInput = currentInput;
+        currentInput = '';
+    }
+
+    // Function to handle the equal button
+    function calculate() {
+        if (previousInput === '' || currentInput === '' || operator === '') return;
+        let result;
+        switch (operator) {
+            case '+':
+                result = parseFloat(previousInput) + parseFloat(currentInput);
+                break;
+            case '-':
+                result = parseFloat(previousInput) - parseFloat(currentInput);
+                break;
+            case '*':
+                result = parseFloat(previousInput) * parseFloat(currentInput);
+                break;
+            case '/':
+                result = parseFloat(previousInput) / parseFloat(currentInput);
+                break;
+            default:
+                return;
+        }
+        updateDisplay(result);
+        currentInput = result.toString();
+        previousInput = '';
+        operator = '';
+    }
+
+    // Function to handle the reset button
+    function resetCalculator() {
+        currentInput = '';
+        previousInput = '';
+        operator = '';
+        updateDisplay('0');
+    }
+
+    // Function to handle delete button
+    function deleteLast() {
+        currentInput = currentInput.slice(0, -1);
+        updateDisplay(currentInput || '0');
+    }
+
+    // Adding event listeners to buttons
+    document.querySelector('.item1').addEventListener('click', () => handleNumber('1'));
+    document.querySelector('.item2').addEventListener('click', () => handleNumber('2'));
+    document.querySelector('.item3').addEventListener('click', () => handleNumber('3'));
+    document.querySelector('.item4').addEventListener('click', () => handleNumber('4'));
+    document.querySelector('.item5').addEventListener('click', () => handleNumber('5'));
+    document.querySelector('.item6').addEventListener('click', () => handleNumber('6'));
+    document.querySelector('.item7').addEventListener('click', () => handleNumber('7'));
+    document.querySelector('.item8').addEventListener('click', () => handleNumber('8'));
+    document.querySelector('.item9').addEventListener('click', () => handleNumber('9'));
+    document.querySelector('.item10').addEventListener('click', () => handleNumber('0'));
+    document.querySelector('.itemDot').addEventListener('click', () => handleNumber('.'));
+
+    document.querySelector('.itemPlus').addEventListener('click', () => handleOperator('+'));
+    document.querySelector('.itemMinut').addEventListener('click', () => handleOperator('-'));
+    document.querySelector('.itemMulti').addEventListener('click', () => handleOperator('*'));
+    document.querySelector('.itemDivid').addEventListener('click', () => handleOperator('/'));
+
+    document.querySelector('.itemEqual').addEventListener('click', calculate);
+    document.querySelector('.itemReset').addEventListener('click', resetCalculator);
+    document.querySelector('.itemDel').addEventListener('click', deleteLast);
+
+</script>
+        
+</body>
+</html>
