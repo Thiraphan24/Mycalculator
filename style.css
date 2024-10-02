@@ -8,14 +8,28 @@ body {
     color: white;
   }
 
+  .theme {
+    color: white;
+  }
+
+  .switch-theme {
+    display: flex;
+    justify-content: end;
+
+  }
+
 
 
   .display {
+    display: flex;
+    justify-content: end;
+    align-items: center;
     background-color: #181f32;
     margin-bottom: 20px;
     height: 100px;
     border-radius: 10px;
     color: white;
+    font-size: 75px;
   }
 
 
@@ -45,6 +59,99 @@ body {
   button {
     background-color: #eae3db;
     border-radius: 10px;
+    font-weight: bolder;
+    font-size: large;
+    color: #434c5d;
+    box-shadow: 0px 4px #b5a49a;
+    border-style: none;
   }
 
- 
+  .itemEqual {
+    background-color: #d13f30;
+    box-shadow: 0px 4px #922619;
+    color: white;
+  }
+
+  .itemEqual:hover {
+    background-color: #f96c5b;
+  }
+
+  .itemReset {
+   background-color: #647299; 
+   box-shadow: 0px 4px #414d75;
+   color: white;
+  }
+
+  .itemReset:hover {
+    background-color: #a2b3e1;
+  }
+
+  .itemDel {
+    background-color: #647299; 
+    box-shadow: 0px 4px #414d75;
+    color: white;
+  }
+
+  .itemDel:hover {
+    background-color: #a2b3e1;
+  }
+
+  button:hover {
+    background-color: white;
+  }
+
+
+  /* .tri-state-toggle {
+    display: flex;
+    justify-content: center;
+    background-color: #252d44;
+    border-radius: 50px;
+    width: 65px;
+    height: 22px;
+  } */
+  
+
+  input {
+  height: 15px;
+  width: 40px;
+  appearance: none;
+  background-color: #d13f30;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+#one {
+  opacity: 1;
+}
+/* ปรับตำแหน่งใหม่สำหรับตัวเลขและสวิตช์ */
+.content-theme {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.toggle-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* จัดตำแหน่งให้อยู่ขวาสุด */
+  margin-bottom: 20px;
+}
+
+.number-step {
+  color: white;
+  text-align: right;
+  margin-bottom: 5px; /* เพิ่มระยะห่างเล็กน้อยระหว่างตัวเลขและสวิตช์ */
+}
+
+.tri-state-toggle {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px; /* เพิ่มช่องว่างระหว่างปุ่ม */
+  background-color: #252d44;
+  border-radius: 50px;
+  width: 70px;
+  height: 22px;
+}
+
+/* .cal-number {
+  font-size: 80px;
+} */

@@ -10,11 +10,32 @@
     
     
     <div class="typing">
-        <div>
+        <div class="header">
+            
             <h1>calc</h1>
+
+            <div>
+                <div class="content-theme">
+                    <div class="switch-theme">
+                        <div class="theme">THEME</div>
+                        <div class="toggle-wrapper">
+                            <div class="number-step">1 &nbsp &nbsp 2 &nbsp &nbsp 3</div>
+                            <div class="tri-state-toggle">
+                                <input class="button" type="radio" name="toggle" id="one" />
+                                <input class="button" type="radio" name="toggle" id="two" />
+                                <input class="button" type="radio" name="toggle" id="three" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+        
         </div>
         <div class="display" id="display">
+         <div class="cal-number">
             0
+         </div>
         </div>
 
     <div class="cal-button">
@@ -134,6 +155,32 @@
     document.querySelector('.itemEqual').addEventListener('click', calculate);
     document.querySelector('.itemReset').addEventListener('click', resetCalculator);
     document.querySelector('.itemDel').addEventListener('click', deleteLast);
+
+
+    var buttons = document.getElementsByClassName("button");
+var arr = [...buttons];
+
+arr.forEach((element, index) => {
+  element.addEventListener("click", () => {
+    element.style.opacity = "1";
+    if (index == 0) {
+      document.getElementsByTagName("body")[0].style.backgroundColor = "#3b4664";
+    } else if (index == 1) {
+      document.getElementsByTagName("body")[0].style.backgroundColor = "white";
+    } else {
+      document.getElementsByTagName("body")[0].style.backgroundColor =
+        "#17062a";
+    }
+    arr
+      .filter(function (item) {
+        return item != element;
+      })
+      .forEach((item) => {
+        item.style.opacity = "0";
+      });
+  });
+});
+
 
 </script>
         
